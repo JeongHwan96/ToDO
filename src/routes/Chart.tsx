@@ -32,12 +32,8 @@ const Chart = ({ coinId }: ChartProps) => {
           type="line"
           series={[
             {
-              name: "hello",
-              data: [1, 2, 3, 4, 5, 6],
-            },
-            {
               name: "sales",
-              data: [11, 21, 31, 41, 51, 61],
+              data: data?.map((price) => price.close),
             },
           ]}
           options={{
