@@ -286,6 +286,7 @@ function Coin() {
             <Tab isActive={chartMatch !== null}>
               <Link to={`/${coinId}/chart`}>
                 <Chart coinId={coinId as string} />
+                Chart
               </Link>
             </Tab>
             <Tab isActive={priceMatch !== null}>
