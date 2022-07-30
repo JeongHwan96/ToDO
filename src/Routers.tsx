@@ -7,7 +7,7 @@ import Chart from "./routes/Chart";
 
 const Routers = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="Coin-TS">
       <Routes>
         <Route path="/:coinId/" element={<Coin />}>
           <Route path={`price`} element={<Price />}></Route>
