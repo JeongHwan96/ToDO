@@ -4,14 +4,17 @@ import { Routes, Route, useLocation, Link } from "react-router-dom";
 import styled from "styled-components";
 import Chart from "../routes/Chart";
 import Price from "../routes/Price";
+
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../Api";
-
 import { Helmet } from "react-helmet";
 
 const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
   font-size: 48px;
+  text-shadow: rgb(83 61 74) 1px 1px, rgb(83 61 74) 2px 2px,
+    rgb(83 61 74) 3px 3px, rgb(83 61 74) 4px 4px, rgb(83 61 74) 5px 5px,
+    rgb(83 61 74) 6px 6px;
 `;
 
 const Loader = styled.span`
@@ -29,6 +32,18 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const Home = styled.div`
+  position: absolute;
+  left: 0%;
+  margin: 0 0 0 30%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme.accentColor};
+  font-size: 30px;
 `;
 
 const Overview = styled.div`
@@ -174,12 +189,25 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
-      <Helmet>
-        <title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </title>
-      </Helmet>
+      <title>
+        {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+      </title>
+
       <Header>
+        <Home>
+          <a href="/Coin-TS">
+            <img
+              src="images/home.png"
+              alt=""
+              style={{
+                width: 50,
+                border: `2px solid black`,
+                borderRadius: `50%`,
+                padding: `10%`,
+              }}
+            />
+          </a>{" "}
+        </Home>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>

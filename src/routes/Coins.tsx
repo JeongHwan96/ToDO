@@ -22,7 +22,7 @@ const Header = styled.head`
 const CoinList = styled.ul``;
 const Coin = styled.li`
   background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  color: ${(props) => props.theme.textColor};
   width: 30%;
   margin: 0 auto;
 
