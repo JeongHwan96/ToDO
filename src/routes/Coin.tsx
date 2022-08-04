@@ -153,8 +153,9 @@ interface PriceData {
   };
 }
 
-function Coin() {
-  // const [loading, setLoading] = useState(true);
+interface ICoinProps {}
+
+function Coin({}: ICoinProps) {
   const { coinId } = useParams();
   const location = useLocation();
   const state = location.state as RouterState;

@@ -5,7 +5,9 @@ import Coins from "./routes/Coins";
 import Price from "./routes/Price";
 import Chart from "./routes/Chart";
 
-const Routers = () => {
+interface IRouterProps {}
+
+const Router = ({}: IRouterProps) => {
   return (
     <BrowserRouter basename="Coin-TS">
       <Routes>
@@ -19,4 +21,4 @@ const Routers = () => {
   );
 };
 
-export default Routers;
+export default Router;
