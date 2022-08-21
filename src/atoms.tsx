@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-interface IToDoState {
+export interface IToDoState {
   [key: string]: ITodo[];
 }
 export interface ITodo {

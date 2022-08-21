@@ -2,12 +2,13 @@ import { useForm } from "react-hook-form";
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import DragabbleCard from "./DragabbleCard";
-import { ITodo, toDoState } from "../atoms";
+import { ITodo, toDoState, IToDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
   width: 300px;
-  padding-top: 10px;
+
   background-color: ${(props) => props.theme.boardColor};
   border-radius: 5px;
   min-height: 300px;
@@ -16,10 +17,9 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 const Title = styled.h2`
-  text-align: center;
   font-weight: 600;
-  margin-bottom: 10px;
   font-size: 18px;
+  padding: 3%;
 `;
 interface IAreaProps {
   isDraggingFromThis: boolean;
@@ -28,19 +28,35 @@ interface IAreaProps {
 const Area = styled.div<IAreaProps>`
   background-color: ${(props) =>
     props.isDraggingOver
-      ? "#dfe6e9"
+      ? "#a59bdd"
       : props.isDraggingFromThis
-      ? "#b2bec3"
+      ? "#87c5e0"
       : "transparent"};
   flex-grow: 1;
   transition: background-color 0.3s ease-in-out;
   padding: 20px;
 `;
 const Form = styled.form`
+  display: flex;
   width: 100%;
   input {
-    width: 100%;
+    margin: 0 auto;
+    width: 70%;
+    border: none;
+    border-bottom: 3px solid black;
+    background: none;
   }
+  input:focus {
+    outline: none;
+  }
+`;
+
+const Div = styled.div`
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  background-color: ${(props) => props.theme.headerColor};
+  font-size: 18px;
 `;
 interface IBoardProps {
   toDos: ITodo[];
@@ -66,14 +82,21 @@ function Board({ toDos, boardId }: IBoardProps) {
     });
     setValue("toDo", "");
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem("ToDo", setToDos);
+  // });
+
   return (
     <Wrapper>
-      <Title>{boardId}</Title>
+      <Div>
+        <Title>{boardId}</Title>
+      </Div>
       <Form onSubmit={handleSubmit(onValid)}>
         <input
           {...register("toDo", { required: true })}
           type="text"
-          placeholder={`Add task on ${boardId}`}
+          placeholder={`Add task `}
         />
       </Form>
       <Droppable droppableId={boardId}>
