@@ -34,7 +34,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://JeongHwan96.github.io/Coin-TS",
+  "homepage": "http://JeongHwan96.github.io/ToDo",
   "eslintConfig": {
     "extends": [
       "react-app",
